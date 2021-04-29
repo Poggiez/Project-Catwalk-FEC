@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Review from './components/R-and-R/r-and-r';
+
+const App = () => (
+  <div>
+    <h1>This is our app</h1>
+    <Review />
+  </div>
+);
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('app')
+  <App />,
+  document.getElementById('app'),
 );
