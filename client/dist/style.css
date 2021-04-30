@@ -26,6 +26,7 @@
   object-position: 50% 50%;
   position: relative;
 }
+
 #overview .col-sm-12 {
   height: 700px;
   max-height: fit-content;
@@ -88,8 +89,8 @@
 }
 #overview #img .expand {
   margin: 0 auto;
-  top: 0;
-  right: 0;
+  top: 5%;
+  right: 10%;
   border: none;
   background-color: transparent;
   font-size: 1.2rem;
@@ -140,6 +141,29 @@
 }
 #overview #img #thumbnail-expand .expandIcon {
   text-decoration: none;
+}
+#overview #img #thumbnail {
+  overflow-y: scroll;
+  white-space: nowrap;
+  height: 400px;
+  width: 75px;
+  display: flex;
+  justify-content: flex-start;
+}
+#overview #img .thumbnail-tool{
+  position: relative;
+  background-color: pink;
+  width: 50px;
+  height: 500px;
+  left: 5%;
+}
+#overview #img .thumbnail-pre,
+#overview #img .thumbnail-next {
+  position: absolute;
+}
+
+#overview #img #thumbnail::-webkit-scrollbar {
+  display: none;
 }
 
 #overview #thumbnail #thumbnail-container {
@@ -242,6 +266,28 @@
   width: 100%;
   text-align: left;
   font-size: 1rem;
+}
+#overview #detail .true {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+#overview #detail .false {
+  display: none;
+}
+#overview #detail .sharelink {
+  border: none;
+  background-color: transparent;
+  color: grey;
+}
+#overview #detail .sharelink:hover {
+  text-decoration: underline;
+}
+#overview #detail .shareicon {
+  width: 15px;
+  height: 15px;
 }
 #overview #detail .quantitySelector {
   width: 6rem;

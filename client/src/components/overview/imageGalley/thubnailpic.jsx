@@ -8,7 +8,7 @@ export default function ThumbnailPic(props) {
           props.data.map((pic, index) => {
             return (
               <li id='thumbnail-container' key={index}>
-              <button className='thumbnailClick' onClick={props.handleClick} id={index}></button>
+                <button className='thumbnailClick' onClick={props.handleClick} id={index}></button>
               </li>
             )
           })
@@ -17,26 +17,33 @@ export default function ThumbnailPic(props) {
     )
   } else {
     return (
-      <ul id='thumbnail'>
-        {
-          props.data.map((pic, index) => {
-            let enlargeStyle = ''
-            if (index === props.currentInd) {
-              enlargeStyle = 'enlarge'
-            }
-            return (
-              <li id='thumbnail-container' key={index}>
-                <img
-                  id={index}
-                  src={pic.thumbnail_url}
-                  onClick={props.handleClick}
-                  className={enlargeStyle}
-                />
-              </li>
-            )
-          })
-        }
-      </ul>
+      <div>
+        {/* <div className='thumbnail-tool'>
+          <button className='thumbnail-pre'>a</button>
+          <button className='thumbnail-next'>a</button>
+        </div> */}
+        <ul id='thumbnail'>
+          {
+            props.data.map((pic, index) => {
+              let enlargeStyle = ''
+              if (index === props.currentInd) {
+                enlargeStyle = 'enlarge'
+              }
+              return (
+                <li id='thumbnail-container' key={index}>
+                  <img
+                    id={index}
+                    src={pic.thumbnail_url}
+                    onClick={props.handleClick}
+                    className={enlargeStyle}
+                  />
+                </li>
+              )
+            })
+          }
+        </ul>
+
+      </div>
     )
   }
 

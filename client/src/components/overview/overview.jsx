@@ -23,8 +23,8 @@ export default function Overview(props) {
       headers: API_KEY
     })
       .then(res => {
-        setItem(res.data[0]);
-        handlegetStyles(res.data[0].id)
+        setItem(res.data[4]);
+        handlegetStyles(res.data[4].id)
       })
 
       .catch(err => {
