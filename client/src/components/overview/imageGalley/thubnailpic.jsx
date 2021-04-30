@@ -8,7 +8,7 @@ export default function ThumbnailPic(props) {
           props.data.map((pic, index) => {
             return (
               <li id='thumbnail-container' key={index}>
-                <a href='#' className='expandIcon'>*</a>
+              <button className='thumbnailClick' onClick={props.handleClick} id={index}></button>
               </li>
             )
           })
