@@ -102,7 +102,7 @@ app.get('/productById', (req, res) => {
       product_id: req.query.product_id || 16056,
     },
   };
-  console.log(reviewHeader)
+
   axios.get(`${apiUrl}products/${req.query.product_id}`, reviewHeader)
     .then((response) => {
       res.json({ response: response.data });
@@ -133,7 +133,7 @@ app.get('/styles', (req, res) => {
       Authorization: API_KEY,
     },
   };
-  console.log(req.query);
+
   axios.get(`${apiUrl}products/${req.query.id}/styles`, reviewHeader)
     .then((response) => {
       res.json({ response: response.data });

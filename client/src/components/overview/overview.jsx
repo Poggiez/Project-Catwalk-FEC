@@ -1,3 +1,10 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ImageGallery from './imageGalley/ImageGallery';
@@ -18,18 +25,6 @@ const Overview = (props) => {
   const toggleExpand = () => {
     setExpand(!expand);
   };
-  /*
-  const handlegetItems = () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products', {
-      headers: API_KEY,
-    })
-      .then((res) => {
-        setItem(res.data[4]);
-        handlegetStyles(res.data[4].id);
-      });
-    setExpand(!expand);
-  }; */
-
   const handleGetStyles = () => {
     if (productId) {
       const params = {
@@ -60,6 +55,7 @@ const Overview = (props) => {
     setNextdisplay('button');
     setPredisplay('hidden');
   };
+
   if (expand && styles.length !== 0) {
     return (
       <div id="overview">
