@@ -4,12 +4,10 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "scripts": {
+    "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/server.js",
     "start": "npx server/server.js",
-    "build": "webpack --config=webpack.config.prod.js",
-    "build-dev": "webpack --config=webpack.config.dev.js",
-    "test": "jest --coverage",
-    "watch": "webpack --config=webpack.config.prod.js --watch"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

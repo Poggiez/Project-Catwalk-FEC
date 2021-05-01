@@ -9,34 +9,36 @@ const apiURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const apiFunc = {
 
   getRelatedData: async (currentId, dataFunc) => {
-    // container for data
-    const result = [];
-    // gets an array of ids that are related to current item
-    let response = await axios.get(`${apiURL}/products/${currentId}/related`, { headers: { Authorization: API_KEY } });
-    const relatedIDs = response.data;
+    if (currentId) {
+      // container for data
+      const result = [];
+      // gets an array of ids that are related to current item
+      let response = await axios.get(`${apiURL}/products/${currentId}/related`, { headers: { Authorization: API_KEY } });
+      const relatedIDs = response.data;
 
-    const productInfo = {};
-    const styleInfo = {};
+      const productInfo = {};
+      const styleInfo = {};
 
-    // for each id in relateIDs, call this endpoint in parallel
-    await Promise.all([
+      // for each id in relateIDs, call this endpoint in parallel
+      await Promise.all([
 
-      Promise.all(relatedIDs.map(async (id, index) => {
-        let response = await axios.get(`${apiURL}/products/${id}`, { headers: { Authorization: API_KEY } });
-        productInfo[id] = response.data;
-      })),
-      Promise.all(relatedIDs.map(async (id, index) => {
-        let response = await axios.get(`${apiURL}/products/${id}/styles`, { headers: { Authorization: API_KEY } });
-        styleInfo[id] = response.data;
-      })),
+        Promise.all(relatedIDs.map(async (id, index) => {
+          let response = await axios.get(`${apiURL}/products/${id}`, { headers: { Authorization: API_KEY } });
+          productInfo[id] = response.data;
+        })),
+        Promise.all(relatedIDs.map(async (id, index) => {
+          let response = await axios.get(`${apiURL}/products/${id}/styles`, { headers: { Authorization: API_KEY } });
+          styleInfo[id] = response.data;
+        })),
 
-    ]);
+      ]);
 
-    relatedIDs.forEach((id) => {
-      result.push({ productInfo: productInfo[id], styleInfo: styleInfo[id] });
-    });
+      relatedIDs.forEach((id) => {
+        result.push({ productInfo: productInfo[id], styleInfo: styleInfo[id] });
+      });
 
-    dataFunc(result);
+      dataFunc(result);
+    }
   },
 
   getProductData: async (array, dataFunc) => {
