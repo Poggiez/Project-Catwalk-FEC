@@ -6,7 +6,7 @@ import Overview from './components/overview/overview';
 import RelatedItemsAndComparison from './components/related&comp/related_comp';
 
 const App = () => {
-  const [productId, setProductId] = useState(16153);
+  const [productId, setProductId] = useState(16056);
   const [product, setProduct] = useState({});
 
   const getProduct = () => {

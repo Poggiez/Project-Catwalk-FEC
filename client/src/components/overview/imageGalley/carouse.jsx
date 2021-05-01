@@ -1,61 +1,53 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Carouse = (props) => {
-  const [{ nextDisplay }] = useState(props);
-  const [{ currentInd }] = useState(props);
-  const [{ goToNext }] = useState(props);
-  const [{ predisplay }] = useState(props);
-  const [{ goToPrevious }] = useState(props);
-  const [{ data }] = useState(props);
-
   return (
-    <div className="carousel container">
+    <div className='carousel container'>
       <TransformWrapper
         defaultScale={1}
         defaultPositionX={200}
-        defaultPositionY={100}
-      >
-        {({
-          zoomIn, zoomOut, resetTransform, ...rest
-        }) => (
-          <>
+        defaultPositionY={100}>
+        {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+          <React.Fragment>
             <TransformComponent>
               <img
-                className="carousel_pic img-fluid"
-                src={data[currentInd].url}
+                className='carousel_pic img-fluid'
+                src={props.data[props.currentInd].url}
               />
             </TransformComponent>
             <div className="tools">
-              <button type="button" onClick={zoomIn} className="zoomin">+</button>
+              <button onClick={zoomIn} className='zoomin'>+</button>
               <span>zoom</span>
-              <button type="button" onClick={zoomOut} className="zoomout">-</button>
+              <button onClick={zoomOut} className='zoomout'>-</button>
             </div>
-          </>
+          </React.Fragment>
         )}
       </TransformWrapper>
       <button
-        type="button"
-        className={nextDisplay}
-        onClick={goToNext}
-      >
+        className={props.nextdisplay}
+        onClick={props.goToNext} >
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
       <button
-        type="button"
-        id="previous"
-        className={predisplay}
-        onClick={goToPrevious}
-      >
+        id='previous'
+        className={props.predisplay}
+        onClick={props.goToPrevious} >
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
     </div>
-  );
-};
+  )
+
+}
 
 export default Carouse;
