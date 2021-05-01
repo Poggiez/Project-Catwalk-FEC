@@ -103,6 +103,7 @@ export default function Overview(props) {
                   nextdisplay={nextdisplay}
                   predisplay={predisplay}
                   setPredisplay={setPredisplay}
+                  expand={expand}
                 />
               </div>
             </div>

@@ -5,12 +5,19 @@ import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function ThumbnailPic(props) {
   const handleScrollup = () => {
+    // if (!props.expand) {
     document.getElementById('thumbnail').scrollTop -= 150;
-    console.log('clicked')
+    // console.log('clicked')
+    // }
   }
+
   const handleScrollDown = () => {
+    // if (!props.expand) {
     document.getElementById('thumbnail').scrollTop += 150;
+
+    // }
   }
+
   if (props.expand) {
     return (
       <ul id='thumbnail-expand'>
@@ -31,10 +38,10 @@ export default function ThumbnailPic(props) {
         <div id='slide-container'>
           <div className='thumbnail-tool'>
             <button className='thumbnail-pre' onClick={handleScrollup}>
-            <FontAwesomeIcon icon={faChevronCircleUp} />
+              <FontAwesomeIcon icon={faChevronCircleUp} />
             </button>
             <button className='thumbnail-next' onClick={handleScrollDown}>
-            <FontAwesomeIcon icon={faChevronCircleDown} />
+              <FontAwesomeIcon icon={faChevronCircleDown} />
             </button>
           </div>
           <ul id='thumbnail'>

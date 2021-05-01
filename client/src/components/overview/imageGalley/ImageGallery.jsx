@@ -18,7 +18,7 @@ const ImageGallery = (props) => {
     if (props.currentInd === 0) {
       props.setPredisplay('hidden')
     }
-    if(props.currentInd<6){
+    if (props.currentInd < 6 && !props.expand) {
       document.getElementById('thumbnail').scrollTop -= 150;
     }
   }
@@ -31,7 +31,7 @@ const ImageGallery = (props) => {
         props.setNextdisplay('hidden')
       }
     }
-    if(props.currentInd>=5){
+    if (props.currentInd >= 5 && !props.expand) {
       document.getElementById('thumbnail').scrollTop += 150;
     }
   }
@@ -47,6 +47,12 @@ const ImageGallery = (props) => {
   }
   const handleClick = ({ target }) => {
     props.setCurrentInd(Number(target.id))
+    if (currentInd > 2) {
+      document.getElementById('thumbnail').scrollTop -= 200;
+    }
+    if (currentInd <= 5) {
+      document.getElementById('thumbnail').scrollTop -= 150;
+    }
 
     if (Number(target.id) < props.images.length - 1) {
       props.setNextdisplay('button')
