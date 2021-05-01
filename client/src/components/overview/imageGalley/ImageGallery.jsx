@@ -25,7 +25,6 @@ const ImageGallery = (props) => {
     if (props.currentInd < 6 && !props.expand) {
       document.getElementById('thumbnail').scrollTop -= 150;
     }
-  }
   };
 
   useEffect(() => handlechange());
@@ -41,9 +40,7 @@ const ImageGallery = (props) => {
     if (props.currentInd >= 5 && !props.expand) {
       document.getElementById('thumbnail').scrollTop += 150;
     }
-  }
   };
-
 
   const goToPrevious = () => {
     if (currentInd > 0) {
@@ -77,6 +74,7 @@ const ImageGallery = (props) => {
       setPredisplay('hidden');
     }
   };
+
   return (
     <div id="img" className="container">
       <Carouse

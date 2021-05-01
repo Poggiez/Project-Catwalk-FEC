@@ -16,34 +16,37 @@ const Overview = (props) => {
   const [nextdisplay, setNextdisplay] = useState('button');
   const [photos, setPhotos] = useState([]);
   const toggleExpand = () => {
-    setExpand(!expand)
-  }
-  const handlegetItems = () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products', {
-      headers: API_KEY
-    })
-      .then(res => {
-        setItem(res.data[4]);
-        handlegetStyles(res.data[4].id)
-      })
     setExpand(!expand);
   };
+  /*
+  const handlegetItems = () => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products', {
+      headers: API_KEY,
+    })
+      .then((res) => {
+        setItem(res.data[4]);
+        handlegetStyles(res.data[4].id);
+      });
+    setExpand(!expand);
+  }; */
 
   const handleGetStyles = () => {
-    const params = {
-      id: productId,
-    };
-    axios.get('styles', { params })
-      .then(({ data }) => {
-        const newStyle = data.response.results[0];
-        const newStyles = data.response.results;
-        setCurrentStyle(newStyle);
-        setPhotos(newStyle.photos);
-        setStyles(newStyles);
-      })
-      .catch((err) => {
-        throw err;
-      });
+    if (productId) {
+      const params = {
+        id: productId,
+      };
+      axios.get('styles', { params })
+        .then(({ data }) => {
+          const newStyle = data.response.results[0];
+          const newStyles = data.response.results;
+          setCurrentStyle(newStyle);
+          setPhotos(newStyle.photos);
+          setStyles(newStyles);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
   };
 
   useEffect(() => handleGetStyles(), []);

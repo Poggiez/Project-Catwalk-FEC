@@ -7,7 +7,7 @@
 }
 
 #overview #img {
-  width: 100%;
+  width: 500%;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -171,11 +171,9 @@
   border: 0;
 }
 
-
 #overview #img #thumbnail::-webkit-scrollbar {
   display: none;
 }
-
 
 #overview #thumbnail #thumbnail-container {
   padding-left: 0;
@@ -265,12 +263,12 @@
 #overview .sharebutton {
   color: grey;
 }
-#overview .sharelink{
+#overview .sharelink {
   border: 0;
   background-color: transparent;
   color: gray;
 }
-#overview .sharelink:hover{
+#overview .sharelink:hover {
   text-decoration: underline;
 }
 #overview .sharebox {
@@ -334,7 +332,7 @@
   background-color: rgb(233, 230, 230);
   border: 0;
 }
-#overview .hide{
+#overview .hide {
   display: none;
 }
 #overview #detail .sharebutton {
@@ -379,7 +377,6 @@
 
   background-color: rgb(233, 230, 230);
   border: 0;
-
 }
 #overview #detail .detailButtons {
   display: flex;

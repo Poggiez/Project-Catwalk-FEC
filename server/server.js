@@ -6,12 +6,10 @@ const cors = require('cors');
 
 // const { API_KEY } = process.env.API_KEY;
 const API_KEY = require('../config');
-console.log(API_KEY)
 
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/';
 const port = process.env.PORT || 3000;
 const app = express();
-app.use(bodyparser.json());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.static(path.join(__dirname, '../client/src/components')));
@@ -135,6 +133,7 @@ app.get('/styles', (req, res) => {
       Authorization: API_KEY,
     },
   };
+  console.log(req.query);
   axios.get(`${apiUrl}products/${req.query.id}/styles`, reviewHeader)
     .then((response) => {
       res.json({ response: response.data });
