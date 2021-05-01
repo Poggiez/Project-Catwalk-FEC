@@ -350,7 +350,7 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 config.js
-
+package-lock.json
 client/dist/bundle.js
 client/dist/bundle.js.map
 client/dist/bundle.js.license
