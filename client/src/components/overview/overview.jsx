@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import ImageGallery from './imageGalley/ImageGallery.jsx';
-import Description from './description.jsx';
-import ProductDetail from './productDetail.jsx';
-import API_KEY from '../../../../config.js';
 import axios from 'axios';
+import ImageGallery from './imageGalley/ImageGallery';
+import Description from './description';
+import ProductDetail from './productDetail';
 
-export default function Overview(props) {
+const Overview = (props) => {
   const [expand, setExpand] = useState(false);
-  const [item, setItem] = useState({});
+  const [{ item }] = useState(props);
+  const [{ productId }] = useState(props);
   const [styles, setStyles] = useState([]);
-  const [currentstyle, setCurrentstyle] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({});
   const [styleId, setStyleId] = useState(0);
   const [currentInd, setCurrentInd] = useState(0);
   const [predisplay, setPredisplay] = useState('button');
   const [nextdisplay, setNextdisplay] = useState('button');
-
+  const [photos, setPhotos] = useState([]);
   const toggleExpand = () => {
     setExpand(!expand)
   }
@@ -26,45 +26,46 @@ export default function Overview(props) {
         setItem(res.data[4]);
         handlegetStyles(res.data[4].id)
       })
+    setExpand(!expand);
+  };
 
-      .catch(err => {
-        console.log(err)
+  const handleGetStyles = () => {
+    const params = {
+      id: productId,
+    };
+    axios.get('styles', { params })
+      .then(({ data }) => {
+        const newStyle = data.response.results[0];
+        const newStyles = data.response.results;
+        setCurrentStyle(newStyle);
+        setPhotos(newStyle.photos);
+        setStyles(newStyles);
       })
-  }
-  const handlegetStyles = (id) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${id}/styles`, {
-      headers: API_KEY
-    })
-      .then(res => {
-        setCurrentstyle(res.data.results[0])
-        setStyles(res.data.results)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  useEffect(() => handlegetItems(), [])
+      .catch((err) => {
+        throw err;
+      });
+  };
+
+  useEffect(() => handleGetStyles(), []);
 
   const handleSelector = ({ target }) => {
-
-    setCurrentstyle(styles[target.id])
+    const newCurStyle = styles[target.id];
+    setCurrentStyle(newCurStyle);
+    setPhotos(newCurStyle.photos);
     setCurrentInd(0);
-    setStyleId(Number(target.id))
-
-    setNextdisplay('button')
-    setPredisplay('hidden')
-
-
-  }
-
+    setStyleId(Number(target.id));
+    setNextdisplay('button');
+    setPredisplay('hidden');
+  };
   if (expand && styles.length !== 0) {
     return (
-      <div id='overview' >
-        <div className='container'>
-          <div className='row'>
-            <div className='col-sm-12'>
-              <div className='expanded'>
+      <div id="overview">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
+              <div className="expanded">
                 <ImageGallery
+                  key={JSON.stringify(photos)}
                   currentInd={currentInd}
                   setNextdisplay={setNextdisplay}
                   nextdisplay={nextdisplay}
@@ -72,33 +73,34 @@ export default function Overview(props) {
                   setPredisplay={setPredisplay}
                   setCurrentInd={setCurrentInd}
                   toggleExpand={toggleExpand}
-                  images={currentstyle.photos}
+                  images={photos}
                   expand={expand}
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className='container'>
+        <div className="container">
           <Description
-            id='descrip'
-            item={item} />
+            id="descrip"
+            item={item}
+          />
         </div>
       </div>
-    )
-
-  } else if (!expand && styles.length !== 0) {
+    );
+  } if (!expand && styles.length !== 0) {
     return (
-      <div id='overview' >
-        <div className='container'>
-          <div className='row'>
-            <div className='col-sm-7'>
-              <div className='no-expanded'>
+      <div id="overview">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-7">
+              <div className="no-expanded">
                 <ImageGallery
+                  key={JSON.stringify(photos)}
                   currentInd={currentInd}
                   setCurrentInd={setCurrentInd}
                   toggleExpand={toggleExpand}
-                  images={currentstyle.photos}
+                  images={photos}
                   setNextdisplay={setNextdisplay}
                   nextdisplay={nextdisplay}
                   predisplay={predisplay}
@@ -107,31 +109,31 @@ export default function Overview(props) {
                 />
               </div>
             </div>
-            <div className='col-sm-5' id='detail'>
+            <div className="col-sm-5" id="detail">
               <ProductDetail
-                className='col-5'
+                className="col-5"
                 category={item.category}
                 name={item.name}
                 styles={styles}
                 styleId={styleId}
                 handleSelector={handleSelector}
-                currentstyle={currentstyle}
+                currentstyle={currentStyle}
               />
             </div>
           </div>
         </div>
-        <div className='container'>
+        <div className="container">
           <Description
-            id='descrip'
-            item={item} />
+            id="descrip"
+            item={item}
+          />
         </div>
       </div>
-    )
-  } else {
-    return (
-      <p>Loading</p>
-    )
+    );
   }
+  return (
+    <p>Loading</p>
+  );
+};
 
-
-}
+export default Overview;

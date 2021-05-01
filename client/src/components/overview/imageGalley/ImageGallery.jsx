@@ -1,50 +1,60 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import pics from '../../../../../overviewdata.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExpand } from '@fortawesome/free-solid-svg-icons'
-import Carouse from './carouse.jsx';
-import ThumbnailPic from './thubnailpic.jsx';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExpand } from '@fortawesome/free-solid-svg-icons';
+import Carouse from './carouse';
+import ThumbnailPic from './thubnailpic';
 
 const ImageGallery = (props) => {
-  const [className, setClassname] = useState('')
-  useEffect(() => { handlechange() })
-
+  const [{ images }] = useState(props);
+  const [{ currentInd }] = useState(props);
+  const [{ setNextdisplay }] = useState(props);
+  const [{ setPredisplay }] = useState(props);
+  const [{ setCurrentInd }] = useState(props);
+  const [{ predisplay }] = useState(props);
+  const [{ nextDisplay }] = useState(props);
+  const [{ expand }] = useState(props);
+  const [{ toggleExpand }] = useState(props);
   const handlechange = () => {
-    if (props.currentInd === props.images.length - 1) {
-      props.setNextdisplay('hidden')
+    if (currentInd === images.length - 1) {
+      setNextdisplay('hidden');
     }
-    if (props.currentInd === 0) {
-      props.setPredisplay('hidden')
+    if (currentInd === 0) {
+      setPredisplay('hidden');
     }
     if (props.currentInd < 6 && !props.expand) {
       document.getElementById('thumbnail').scrollTop -= 150;
     }
   }
+  };
+
+  useEffect(() => handlechange());
 
   const goToNext = () => {
-    if (props.currentInd < props.images.length - 1) {
-      props.setCurrentInd(() => props.currentInd + 1)
-      props.setPredisplay('button')
-      if (props.currentInd === props.images.length - 1) {
-        props.setNextdisplay('hidden')
+    if (currentInd < images.length - 1) {
+      setCurrentInd(() => currentInd + 1);
+      setPredisplay('button');
+      if (currentInd === images.length - 1) {
+        setNextdisplay('hidden');
       }
     }
     if (props.currentInd >= 5 && !props.expand) {
       document.getElementById('thumbnail').scrollTop += 150;
     }
   }
+  };
+
 
   const goToPrevious = () => {
-    if (props.currentInd > 0) {
-      props.setCurrentInd(() => props.currentInd - 1);
-      props.setNextdisplay('button')
-      if (props.currentInd === 0) {
-        props.setPredisplay('hidden')
+    if (currentInd > 0) {
+      setCurrentInd(() => currentInd - 1);
+      setNextdisplay('button');
+      if (currentInd === 0) {
+        setPredisplay('hidden');
       }
     }
-  }
+  };
+
   const handleClick = ({ target }) => {
     props.setCurrentInd(Number(target.id))
     if (currentInd > 2) {
@@ -53,44 +63,46 @@ const ImageGallery = (props) => {
     if (currentInd <= 5) {
       document.getElementById('thumbnail').scrollTop -= 150;
     }
+    setCurrentInd(Number(target.id));
 
-    if (Number(target.id) < props.images.length - 1) {
-      props.setNextdisplay('button')
+    if (Number(target.id) < images.length - 1) {
+      setNextdisplay('button');
     } else {
-      props.setNextdisplay('hidden')
+      setNextdisplay('hidden');
     }
 
     if (Number(target.id) > 0) {
-      props.setPredisplay('button')
+      setPredisplay('button');
     } else {
-      props.setPredisplay('hidden')
+      setPredisplay('hidden');
     }
-  }
-
+  };
   return (
-    <div id='img' className='container'>
+    <div id="img" className="container">
       <Carouse
-        data={props.images}
-        currentInd={props.currentInd}
+        key={JSON.stringify(images)}
+        data={images}
+        currentInd={currentInd}
         goToNext={goToNext}
         goToPrevious={goToPrevious}
-        predisplay={props.predisplay}
-        nextdisplay={props.nextdisplay}
+        predisplay={predisplay}
+        nextdisplay={nextDisplay}
       />
       <ThumbnailPic
-        currentInd={props.currentInd}
-        data={props.images}
+        currentInd={currentInd}
+        data={images}
         handleClick={handleClick}
-        expand={props.expand}
+        expand={expand}
       />
       <button
-        className='expand'
-        onClick={props.toggleExpand}>
+        type="button"
+        className="expand"
+        onClick={toggleExpand}
+      >
         <FontAwesomeIcon icon={faExpand} />
       </button>
     </div>
-  )
-
-}
+  );
+};
 
 export default ImageGallery;

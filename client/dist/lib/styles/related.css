@@ -1,0 +1,140 @@
+.allComponents .card {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 340px;
+  width: 200px;
+}
+
+.allComponents .cardGroup {
+  display: flex;
+  justify-content: left;
+}
+
+.allComponents .cardDeck {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.allComponents .card-image-top {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+.arrow-right {
+  transform: rotate(45deg);
+  margin-left: auto;
+}
+
+.arrow-left {
+  transform: rotate(-135deg);
+}
+
+.addOutfit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn {
+  background: transparent;
+  border: 0;
+}
+
+.plus-button {
+  border: 2px solid lightgrey;
+  background-color: #fff;
+  font-size: 16px;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 999px;
+  position: relative;
+}
+
+.plus-button:after,
+.plus-button:before {
+  content: "";
+  display: block;
+  background-color: grey;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.plus-button:before {
+  height: 1em;
+  width: 0.2em;
+}
+
+.plus-button:after {
+  height: 0.2em;
+  width: 1em;
+}
+
+.rating {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+}
+
+.close {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: 0;
+  right: 0;
+  padding-right: 30px;
+  padding-top: 30px;
+}
+.close:hover::before,
+.close:hover::after {
+  background: #525252;
+}
+.close::before,
+.close::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #000;
+}
+.close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.close.hairline::before,
+.close.hairline::after {
+  height: 1px;
+}
+
+.btn {
+  background: transparent;
+}

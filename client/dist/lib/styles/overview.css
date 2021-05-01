@@ -134,6 +134,7 @@
   text-align: center;
   width: 50px;
   height: 480px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -175,6 +176,7 @@
   display: none;
 }
 
+
 #overview #thumbnail #thumbnail-container {
   padding-left: 0;
   width: 50px;
@@ -182,6 +184,31 @@
   max-height: 50px;
   margin-top: 1em;
   /* margin-left: 0.5em; */
+
+  color: gray;
+  padding-left: 10px;
+}
+#overview #thumbnail-expand #thumbnail-container {
+  padding-left: 0;
+  width: 50px;
+  height: 50px;
+  max-height: 50px;
+  margin-left: 0.5em;
+  color: gray;
+  padding-left: 10px;
+}
+#overview #img #thumbnail-expand .expandIcon {
+  background-color: grey;
+  border: 0px;
+  /* color: grey; */
+  width: 15px;
+  height: 15px;
+  display: block;
+  margin-top: 3px;
+  border-radius: 7.5px;
+}
+#overview #img #thumbnail-expand .expandIcon:hover {
+  transform: scale(1.25);
 }
 
 #thumbnail-container .enlarge {
@@ -234,6 +261,39 @@
   /* align-content: space-around; */
   flex-direction: column;
 }
+
+#overview .sharebutton {
+  color: grey;
+}
+#overview .sharelink{
+  border: 0;
+  background-color: transparent;
+  color: gray;
+}
+#overview .sharelink:hover{
+  text-decoration: underline;
+}
+#overview .sharebox {
+  width: 200px;
+  height: 100px;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+#overview .sharebox .p {
+  align-self: flex-start;
+  color: black;
+}
+#overview .shareicon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  font-size: 20px;
+  color: black;
+}
+
 #overview #detail a {
   color: grey;
   vertical-align: bottom;
@@ -260,6 +320,7 @@
   transition: ease-in;
   background-color: gray;
 }
+
 #overview #detail .sizeSelector {
   width: 10rem;
   height: 3rem;
@@ -269,6 +330,12 @@
   color: gray;
   margin-right: 1em;
   text-align: center;
+
+  background-color: rgb(233, 230, 230);
+  border: 0;
+}
+#overview .hide{
+  display: none;
 }
 #overview #detail .sharebutton {
   border: none;
@@ -299,6 +366,7 @@
   width: 15px;
   height: 15px;
 }
+
 #overview #detail .quantitySelector {
   width: 6rem;
   height: 3rem;
@@ -308,6 +376,10 @@
   color: gray;
   margin-right: 1em;
   text-align: center;
+
+  background-color: rgb(233, 230, 230);
+  border: 0;
+
 }
 #overview #detail .detailButtons {
   display: flex;

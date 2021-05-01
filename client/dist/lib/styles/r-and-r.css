@@ -1,0 +1,112 @@
+body {
+  font-style: normal;
+  color: #454545;
+  letter-spacing: 0.05em;
+}
+
+#helpful-yes {
+  text-decoration: none;
+  color: black;
+}
+
+#helpful-yes:hover {
+  cursor: pointer;
+}
+
+#star-icon {
+  color: #525252;
+}
+
+#star {
+  margin-top: 5px;
+  position: absolute;
+}
+
+#user-container-item {
+  margin-left: 10px;
+}
+
+#user-container {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+#review-text-container {
+  position: relative;
+}
+
+#verified-purchaser {
+  display: flex;
+  position: absolute;
+  margin-top: 25px;
+  font-size: 13px;
+  color: #949494;
+}
+
+#verified-icon {
+  float: bottom;
+  color: #454545;
+  margin-right: 5px;
+}
+
+#recommends {
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+
+#recommend-icon {
+  float: left;
+  margin-right: 5px;
+}
+
+#owner-response {
+  background-color: "#ebebeb";
+  padding: 20px;
+}
+
+#review-button {
+  display: inline-block;
+  padding: 1em 1.5em;
+  border: 0.16em solid #454545;
+  margin: 0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #454545;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+#review-button:hover {
+  color: #959595;
+  border-color: #959595;
+}
+#review-button:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+@media all and (max-width: 30em) {
+  #review-button {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+#thumbnail-container {
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#thumbnail-col-container {
+  height: 200px;
+  margin-right: 50px;
+}
+
+#fill-bar:hover {
+  background: tomato;
+}

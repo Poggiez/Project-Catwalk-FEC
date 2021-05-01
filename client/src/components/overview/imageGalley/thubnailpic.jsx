@@ -18,11 +18,12 @@ export default function ThumbnailPic(props) {
     // }
   }
 
+
   if (props.expand) {
     return (
       <ul id='thumbnail-expand'>
         {
-          props.data.map((pic, index) => {
+          props.data.map((item, index) => {
             return (
               <li id='thumbnail-container' key={index}>
                 <button className='thumbnailClick' onClick={props.handleClick} id={index}></button>
@@ -70,5 +71,28 @@ export default function ThumbnailPic(props) {
       </div>
     )
   }
+  return (
+    <ul id="thumbnail">
+      {
+        data.map((pic, index) => {
+          let enlargeStyle = '';
+          if (index === currentInd) {
+            enlargeStyle = 'enlarge';
+          }
+          return (
+            <li id="thumbnail-container" key={index}>
+              <img
+                id={index}
+                src={pic.thumbnail_url}
+                onClick={handleClick}
+                className={enlargeStyle}
+              />
+            </li>
+          );
+        })
+      }
+    </ul>
+  );
+};
 
-}
+export default ThumbnailPic;
