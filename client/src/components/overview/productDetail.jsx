@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import Star from './productdetail/starRating.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareAltSquare } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShareAltSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 import { faPinterestSquare } from '@fortawesome/free-brands-svg-icons';
-// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ProductDetail = (props) => {
-  const [sharebox, setsharebox] = useState('hide')
+  const [sharebox, setsharebox] = useState(false)
+
   const handleClick = () => {
-    setsharebox('display')
+    setsharebox(!sharebox)
   }
   return (
     <div id='detail' >
@@ -29,22 +28,28 @@ const ProductDetail = (props) => {
       <div className='price'>${props.currentstyle.original_price.slice(0, 3)}</div>
 
       <div className='share'>
-        {/* <button className='sharebutton'> */}
-          <span><FontAwesomeIcon icon={faShareAltSquare} /></span>
-          <button className='sharelink' onClick={handleClick}>SHARE</button>
-          <div className={sharebox}>
-            <p>Share with: </p>
-            <a href='https://twitter.com/intent/tweet'><span className='shareicon'>
+        <span><FontAwesomeIcon icon={faShareAltSquare} /></span>
+        <button
+          className='sharelink'
+          onClick={handleClick}>SHARE</button>
+        <div className={`${sharebox}`}>
+          <p>Share with: </p>
+          <a href='https://twitter.com/intent/tweet'>
+            <span className='shareicon'>
               <FontAwesomeIcon icon={faTwitterSquare} />
-            </span></a>
-            <a><span className='shareicon'>
+            </span>
+          </a>
+          <a>
+            <span className='shareicon'>
               <FontAwesomeIcon icon={faInstagramSquare} />
-            </span></a>
-            <a><span className='shareicon'>
+            </span>
+          </a>
+          <a>
+            <span className='shareicon'>
               <FontAwesomeIcon icon={faPinterestSquare} />
-            </span></a>
-          </div>
-        {/* </button> */}
+            </span>
+          </a>
+        </div>
       </div>
       <div className="style">
         <h5>

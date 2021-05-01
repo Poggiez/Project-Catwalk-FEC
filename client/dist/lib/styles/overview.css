@@ -26,6 +26,7 @@
   object-position: 50% 50%;
   position: relative;
 }
+
 #overview .col-sm-12 {
   height: 700px;
   max-height: fit-content;
@@ -128,16 +129,53 @@
   list-style: none;
   position: absolute;
   /* left: 15%; */
-  top: 20%;
+  top: 18%;
   left: 0;
   text-align: center;
   width: 50px;
-  height: 400px;
+  height: 480px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 0;
 }
+#overview #img #thumbnail-expand .expandIcon {
+  text-decoration: none;
+}
+#overview #img #thumbnail {
+  overflow-y: scroll;
+  white-space: nowrap;
+  height: 450px;
+  width: 75px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#overview #img .thumbnail-tool {
+  position: absolute;
+  width: 75px;
+  height: 550px;
+  top: 11%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+#overview #img .thumbnail-pre,
+#overview #img .thumbnail-next {
+  background-color: transparent;
+  display: flex;
+  border: 0;
+}
+
+
+#overview #img #thumbnail::-webkit-scrollbar {
+  display: none;
+}
+
 
 #overview #thumbnail #thumbnail-container {
   padding-left: 0;
@@ -145,7 +183,8 @@
   height: 50px;
   max-height: 50px;
   margin-top: 1em;
-  margin-left: 0.5em;
+  /* margin-left: 0.5em; */
+
   color: gray;
   padding-left: 10px;
 }
@@ -222,6 +261,7 @@
   /* align-content: space-around; */
   flex-direction: column;
 }
+
 #overview .sharebutton {
   color: grey;
 }
@@ -267,6 +307,20 @@
   display: flex;
   justify-content: flex-start;
 }
+#overview #thumbnail-expand .thumbnailClick {
+  width: 2px;
+  height: 20px;
+  background-color: lightgray;
+  border: transparent;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+#overview #thumbnail-expand .thumbnailClick:hover {
+  transform: scale(1.25);
+  transition: ease-in;
+  background-color: gray;
+}
+
 #overview #detail .sizeSelector {
   width: 10rem;
   height: 3rem;
@@ -276,6 +330,7 @@
   color: gray;
   margin-right: 1em;
   text-align: center;
+
   background-color: rgb(233, 230, 230);
   border: 0;
 }
@@ -289,6 +344,29 @@
   text-align: left;
   font-size: 1rem;
 }
+#overview #detail .true {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+#overview #detail .false {
+  display: none;
+}
+#overview #detail .sharelink {
+  border: none;
+  background-color: transparent;
+  color: grey;
+}
+#overview #detail .sharelink:hover {
+  text-decoration: underline;
+}
+#overview #detail .shareicon {
+  width: 15px;
+  height: 15px;
+}
+
 #overview #detail .quantitySelector {
   width: 6rem;
   height: 3rem;
@@ -298,8 +376,10 @@
   color: gray;
   margin-right: 1em;
   text-align: center;
+
   background-color: rgb(233, 230, 230);
   border: 0;
+
 }
 #overview #detail .detailButtons {
   display: flex;

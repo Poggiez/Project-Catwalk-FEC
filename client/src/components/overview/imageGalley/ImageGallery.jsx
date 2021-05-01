@@ -22,6 +22,10 @@ const ImageGallery = (props) => {
     if (currentInd === 0) {
       setPredisplay('hidden');
     }
+    if (props.currentInd < 6 && !props.expand) {
+      document.getElementById('thumbnail').scrollTop -= 150;
+    }
+  }
   };
 
   useEffect(() => handlechange());
@@ -34,7 +38,12 @@ const ImageGallery = (props) => {
         setNextdisplay('hidden');
       }
     }
+    if (props.currentInd >= 5 && !props.expand) {
+      document.getElementById('thumbnail').scrollTop += 150;
+    }
+  }
   };
+
 
   const goToPrevious = () => {
     if (currentInd > 0) {
@@ -47,6 +56,13 @@ const ImageGallery = (props) => {
   };
 
   const handleClick = ({ target }) => {
+    props.setCurrentInd(Number(target.id))
+    if (currentInd > 2) {
+      document.getElementById('thumbnail').scrollTop -= 200;
+    }
+    if (currentInd <= 5) {
+      document.getElementById('thumbnail').scrollTop -= 150;
+    }
     setCurrentInd(Number(target.id));
 
     if (Number(target.id) < images.length - 1) {

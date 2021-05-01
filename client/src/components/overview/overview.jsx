@@ -16,6 +16,16 @@ const Overview = (props) => {
   const [nextdisplay, setNextdisplay] = useState('button');
   const [photos, setPhotos] = useState([]);
   const toggleExpand = () => {
+    setExpand(!expand)
+  }
+  const handlegetItems = () => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products', {
+      headers: API_KEY
+    })
+      .then(res => {
+        setItem(res.data[4]);
+        handlegetStyles(res.data[4].id)
+      })
     setExpand(!expand);
   };
 
@@ -95,6 +105,7 @@ const Overview = (props) => {
                   nextdisplay={nextdisplay}
                   predisplay={predisplay}
                   setPredisplay={setPredisplay}
+                  expand={expand}
                 />
               </div>
             </div>
