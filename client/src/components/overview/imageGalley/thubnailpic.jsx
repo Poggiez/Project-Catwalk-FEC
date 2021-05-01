@@ -1,6 +1,16 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function ThumbnailPic(props) {
+  const handleScrollup = () => {
+    document.getElementById('thumbnail').scrollTop -= 150;
+    console.log('clicked')
+  }
+  const handleScrollDown = () => {
+    document.getElementById('thumbnail').scrollTop += 150;
+  }
   if (props.expand) {
     return (
       <ul id='thumbnail-expand'>
@@ -18,30 +28,37 @@ export default function ThumbnailPic(props) {
   } else {
     return (
       <div>
-        {/* <div className='thumbnail-tool'>
-          <button className='thumbnail-pre'>a</button>
-          <button className='thumbnail-next'>a</button>
-        </div> */}
-        <ul id='thumbnail'>
-          {
-            props.data.map((pic, index) => {
-              let enlargeStyle = ''
-              if (index === props.currentInd) {
-                enlargeStyle = 'enlarge'
-              }
-              return (
-                <li id='thumbnail-container' key={index}>
-                  <img
-                    id={index}
-                    src={pic.thumbnail_url}
-                    onClick={props.handleClick}
-                    className={enlargeStyle}
-                  />
-                </li>
-              )
-            })
-          }
-        </ul>
+        <div id='slide-container'>
+          <div className='thumbnail-tool'>
+            <button className='thumbnail-pre' onClick={handleScrollup}>
+            <FontAwesomeIcon icon={faChevronCircleUp} />
+            </button>
+            <button className='thumbnail-next' onClick={handleScrollDown}>
+            <FontAwesomeIcon icon={faChevronCircleDown} />
+            </button>
+          </div>
+          <ul id='thumbnail'>
+            {
+              props.data.map((pic, index) => {
+                let enlargeStyle = ''
+                if (index === props.currentInd) {
+                  enlargeStyle = 'enlarge'
+                }
+                return (
+                  <li id='thumbnail-container' key={index}>
+                    <img
+                      id={index}
+                      src={pic.thumbnail_url}
+                      onClick={props.handleClick}
+                      className={enlargeStyle}
+                    />
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+
 
       </div>
     )

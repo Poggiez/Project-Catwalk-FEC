@@ -129,11 +129,11 @@
   list-style: none;
   position: absolute;
   /* left: 15%; */
-  top: 20%;
+  top: 18%;
   left: 0;
   text-align: center;
   width: 50px;
-  height: 400px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,22 +145,31 @@
 #overview #img #thumbnail {
   overflow-y: scroll;
   white-space: nowrap;
-  height: 400px;
+  height: 450px;
   width: 75px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
-#overview #img .thumbnail-tool{
-  position: relative;
-  background-color: pink;
-  width: 50px;
-  height: 500px;
-  left: 5%;
+#overview #img .thumbnail-tool {
+  position: absolute;
+  width: 75px;
+  height: 550px;
+  top: 11%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
+
 #overview #img .thumbnail-pre,
 #overview #img .thumbnail-next {
-  position: absolute;
+  background-color: transparent;
+  display: flex;
+  border: 0;
 }
+
 
 #overview #img #thumbnail::-webkit-scrollbar {
   display: none;
@@ -172,7 +181,7 @@
   height: 50px;
   max-height: 50px;
   margin-top: 1em;
-  margin-left: 0.5em;
+  /* margin-left: 0.5em; */
 }
 
 #thumbnail-container .enlarge {
@@ -241,7 +250,7 @@
 #overview #thumbnail-expand .thumbnailClick {
   width: 2px;
   height: 20px;
-  background-color: gray;
+  background-color: lightgray;
   border: transparent;
   border-radius: 10px;
   margin-top: 5px;
@@ -249,6 +258,7 @@
 #overview #thumbnail-expand .thumbnailClick:hover {
   transform: scale(1.25);
   transition: ease-in;
+  background-color: gray;
 }
 #overview #detail .sizeSelector {
   width: 10rem;

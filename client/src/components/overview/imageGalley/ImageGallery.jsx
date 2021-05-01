@@ -18,6 +18,9 @@ const ImageGallery = (props) => {
     if (props.currentInd === 0) {
       props.setPredisplay('hidden')
     }
+    if(props.currentInd<6){
+      document.getElementById('thumbnail').scrollTop -= 150;
+    }
   }
 
   const goToNext = () => {
@@ -27,6 +30,9 @@ const ImageGallery = (props) => {
       if (props.currentInd === props.images.length - 1) {
         props.setNextdisplay('hidden')
       }
+    }
+    if(props.currentInd>=5){
+      document.getElementById('thumbnail').scrollTop += 150;
     }
   }
 
