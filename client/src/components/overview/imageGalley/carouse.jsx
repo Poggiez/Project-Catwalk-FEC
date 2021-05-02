@@ -9,31 +9,19 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 
 const Carouse = (props) => {
   return (
     <div className='carousel container'>
-      <TransformWrapper
-        defaultScale={1}
-        defaultPositionX={200}
-        defaultPositionY={100}>
-        {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-          <React.Fragment>
-            <TransformComponent>
-              <img
-                className='carousel_pic img-fluid'
-                src={props.data[props.currentInd].url}
-              />
-            </TransformComponent>
+      <InnerImageZoom hasSpacer={true} src={props.data[props.currentInd].url} />
+      {/*
             <div className="tools">
               <button onClick={zoomIn} className='zoomin'>+</button>
               <span>zoom</span>
               <button onClick={zoomOut} className='zoomout'>-</button>
-            </div>
-          </React.Fragment>
-        )}
-      </TransformWrapper>
+            </div> */}
       <button
         className={props.nextdisplay}
         onClick={props.goToNext} >
