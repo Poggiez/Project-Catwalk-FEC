@@ -234,6 +234,9 @@
   /* align-content: space-around; */
   flex-direction: column;
 }
+#overview #detail .rating {
+  position: static;
+}
 #overview #detail a {
   color: grey;
   vertical-align: bottom;
