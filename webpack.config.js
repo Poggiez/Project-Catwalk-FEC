@@ -1,14 +1,12 @@
+
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 module.exports = {
-  mode: 'production',
-  devtool: 'source-map',
-  watchOptions: {
-    ignored: /node_modules/,
-  },
+  mode: 'developement',
+  devtool: 'inline-source-map',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',

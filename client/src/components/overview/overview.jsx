@@ -1,3 +1,10 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ImageGallery from './imageGalley/ImageGallery';
@@ -18,22 +25,23 @@ const Overview = (props) => {
   const toggleExpand = () => {
     setExpand(!expand);
   };
-
   const handleGetStyles = () => {
-    const params = {
-      id: productId,
-    };
-    axios.get('styles', { params })
-      .then(({ data }) => {
-        const newStyle = data.response.results[0];
-        const newStyles = data.response.results;
-        setCurrentStyle(newStyle);
-        setPhotos(newStyle.photos);
-        setStyles(newStyles);
-      })
-      .catch((err) => {
-        throw err;
-      });
+    if (productId) {
+      const params = {
+        id: productId,
+      };
+      axios.get('styles', { params })
+        .then(({ data }) => {
+          const newStyle = data.response.results[0];
+          const newStyles = data.response.results;
+          setCurrentStyle(newStyle);
+          setPhotos(newStyle.photos);
+          setStyles(newStyles);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
   };
 
   useEffect(() => handleGetStyles(), []);
@@ -47,6 +55,7 @@ const Overview = (props) => {
     setNextdisplay('button');
     setPredisplay('hidden');
   };
+
   if (expand && styles.length !== 0) {
     return (
       <div id="overview">
@@ -95,6 +104,7 @@ const Overview = (props) => {
                   nextdisplay={nextdisplay}
                   predisplay={predisplay}
                   setPredisplay={setPredisplay}
+                  expand={expand}
                 />
               </div>
             </div>

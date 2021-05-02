@@ -70,7 +70,7 @@ function RelatedItems(props) {
             </li>
           )}
         <div className="cardGroup">
-          {console.log(displayArray)}
+
           {displayArray.map((id, index) => (
             <Card key={index}>
               <div className="rating">
@@ -79,7 +79,7 @@ function RelatedItems(props) {
               <Card.Img onClick={() => setCurrentId(id.productInfo.id)} className="h-50" variant="top" src={id.styleInfo.results[0].photos[0].thumbnail_url} />
               <Card.Body>
                 <Card.Title>{id.productInfo.name}</Card.Title>
-                {console.log(id.productInfo.name)}
+
                 <Card.Text>
                   <p className="card-text">{id.productInfo.category}</p>
                   <p className="card-text">{id.productInfo.default_price}</p>
