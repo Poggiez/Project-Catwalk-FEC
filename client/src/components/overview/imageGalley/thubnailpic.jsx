@@ -59,7 +59,7 @@ export default function ThumbnailPic(props) {
                   enlargeStyle = 'enlarge'
                 }
                 return (
-                  <li id='thumbnail-container'
+                  <li id='thumbnail-container1'
                     className={enlargeStyle}
                     key={index}>
                     <img
