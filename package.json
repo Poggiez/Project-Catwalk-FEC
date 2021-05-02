@@ -78,10 +78,10 @@
     "react": "^16.14.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.14.0",
+    "react-inner-image-zoom": "^2.0.1",
     "react-rating": "^2.0.5",
     "react-star-ratings": "^2.3.0",
     "react-widgets": "^5.0.4",
-    "react-zoom-pan-pinch": "^1.6.1",
     "regenerator-runtime": "^0.13.7",
     "styled-components": "^5.2.3"
   }
